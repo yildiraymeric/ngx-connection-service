@@ -4,11 +4,7 @@
 
 ## Install
 
-You can get it on npm.
-
-```
-npm install ng-connection-service --save
-```
+You can get it from this repo right now. npm package will be available later.
 
 ## Usage
 
@@ -113,11 +109,6 @@ export class AppModule {
 }
 
 ```
-
-## Demo
-
-[Working demo](https://ng-connection-service-demo.surge.sh/)
-
 ## License
 
-[MIT License](https://github.com/ultrasonicsoft/ng-connection-service/blob/master/LICENSE) © Balram Chavan
+[MIT License](https://github.com/ultrasonicsoft/ng-connection-service/blob/master/LICENSE) © M. Yıldıray Meriç & Balram Chavan (orginal work)
