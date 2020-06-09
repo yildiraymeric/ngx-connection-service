@@ -1,6 +1,24 @@
 {
   "name": "ngx-connection-service",
+  "description": "Detects whether browser has an active internet connection or not in Angular application.",
   "version": "7.0.0",
+  "author": "M. Yıldıray Meric & Balram Chavan (orginal work)",
+  "keywords": [
+    "angular",
+    "angular7",
+    "internet-connection",
+    "connectivity",
+    "health-check"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yildiraymeric/ngx-connection-service.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yildiraymeric/ngx-connection-service/issues"
+  },
+  "homepage": "https://github.com/yildiraymeric/ngx-connection-service",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
