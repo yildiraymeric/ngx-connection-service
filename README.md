@@ -2,14 +2,51 @@
 
 > Detects whether browser has an active internet connection or not in Angular application. 
 
+This library is a fork of https://github.com/ultrasonicsoft/ng-connection-service by Balram Chavan. 
+
 ## Install
 
-You can get it from this repo right now. npm package will be available later.
+```ts
+npm i ngx-connection-service --save
+```
+
+## Angular Version Compatibility
+
+Please use following table to determine suitable library version for your Angular project.
+
+| *ngx-connection-service version* | *Angular version* |
+| --- | --- |
+| 7.0.x | 7.2.16 |
+
 
 ## Usage
 
-1. Inject `ConnectionService` in Angular component's constructor.
-2. Subscribe to `monitor()` method to get push notification whenever internet connection status is changed.
+- Import `ConnectionServiceModule` in your `app.module.ts`. 
+
+```ts
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+
+import {AppComponent} from './app.component';
+import {ConnectionServiceModule} from 'ngx-connection-service';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    ConnectionServiceModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+}
+```
+
+- Inject `ConnectionService` in your component's constructor.
+- Subscribe to `monitor()` method to get push notification whenever internet connection status is changed.
 
 ```ts
 import { Component } from '@angular/core';
@@ -56,7 +93,7 @@ export interface ConnectionServiceOptions {
   enableHeartbeat?: boolean;
   /**
    * Url used for checking Internet connectivity, heartbeat system periodically makes "HEAD" requests to this URL to determine Internet
-   * connection status. Default value is "//internethealthtest.org".
+   * connection status. Default value is "//server.test-cors.org".
    */
   heartbeatUrl?: string;
   /**
