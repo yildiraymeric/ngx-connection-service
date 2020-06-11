@@ -13,7 +13,7 @@ You can get it from this repo right now. npm package will be available later.
 
 ```ts
 import { Component } from '@angular/core';
-import { ConnectionService } from 'ng-connection-service';
+import { ConnectionService } from 'ngx-connection-service';
 
 @Component({
   selector: 'app-root',
@@ -82,7 +82,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
-import {ConnectionServiceModule, ConnectionServiceOptions, ConnectionServiceOptionsToken} from 'ng-connection-service';
+import {ConnectionServiceModule, ConnectionServiceOptions, ConnectionServiceOptionsToken} from 'ngx-connection-service';
 
 @NgModule({
   declarations: [
@@ -111,4 +111,4 @@ export class AppModule {
 ```
 ## License
 
-[MIT License](https://github.com/ultrasonicsoft/ng-connection-service/blob/master/LICENSE) © M. Yıldıray Meriç & Balram Chavan (orginal work)
+[MIT License](https://github.com/yildiraymeric/ngx-connection-service/blob/master/LICENSE) © M. Yıldıray Meriç & Balram Chavan (orginal work)

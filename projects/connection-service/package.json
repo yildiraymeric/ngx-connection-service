@@ -1,25 +1,30 @@
 {
-  "name": "ng-connection-service",
-  "version": "2.0.0",
-  "description": "Detects active internet connection in Angular application.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ultrasonicsoft/ng-connection-service"
-  },
+  "name": "ngx-connection-service",
+  "version": "7.0.0",
+  "description": "Detects whether browser has an active internet connection or not in Angular application.",
   "keywords": [
     "detect",
     "internet",
     "connection",
     "angular",
     "service",
-    "HTTP"
+    "HTTP",
+    "angular",
+    "angular7",
+    "internet-connection",
+    "connectivity",
+    "health-check"
   ],
-  "author": "Balram Chavan",
+  "author": "M. Yıldıray Meric",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ultrasonicsoft/ng-connection-service/issues"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yildiraymeric/ngx-connection-service.git"
   },
-  "homepage": "https://github.com/ultrasonicsoft/ng-connection-service#readme",
+  "bugs": {
+    "url": "https://github.com/yildiraymeric/ngx-connection-service/issues"
+  },
+  "homepage": "https://github.com/yildiraymeric/ngx-connection-service",
   "peerDependencies": {
     "lodash": ">=4",
     "@angular/common": ">=7",
