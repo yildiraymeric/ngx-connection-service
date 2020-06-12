@@ -32,6 +32,10 @@ export interface ConnectionServiceOptions {
    */
   heartbeatUrl?: string;
   /**
+   * Callback function to used for executing heartbeat requests. Defaults to HttpClient.request(...) function.
+   */
+  heartbeatExecutor?: (options?: ConnectionServiceOptions) => Observable<any>;
+  /**
    * Interval used to check Internet connectivity specified in milliseconds. Default value is "30000".
    */
   heartbeatInterval?: number;
@@ -60,7 +64,7 @@ export class ConnectionService implements OnDestroy {
     heartbeatUrl: '//server.test-cors.org/server?id=' + Date.now() + '&enable=true&status=200&credentials=false',
     heartbeatInterval: 30000,
     heartbeatRetryInterval: 1000,
-    requestMethod: 'head'
+    requestMethod: 'head',
   };
 
   private stateChangeEventEmitter = new EventEmitter<ConnectionState>();
@@ -83,7 +87,17 @@ export class ConnectionService implements OnDestroy {
   }
 
   constructor(private http: HttpClient, @Inject(ConnectionServiceOptionsToken) @Optional() options: ConnectionServiceOptions) {
-    this.serviceOptions = _.defaults({}, options, ConnectionService.DEFAULT_OPTIONS);
+    this.serviceOptions = _.defaults(
+      {},
+      options,
+      ConnectionService.DEFAULT_OPTIONS,
+      {
+        heartbeatExecutor: () => this.http.request(
+          this.serviceOptions.requestMethod,
+          this.serviceOptions.heartbeatUrl,
+          {responseType: 'text'}
+        ),
+      });
 
     this.checkNetworkState();
     this.checkInternetState();
@@ -98,7 +112,7 @@ export class ConnectionService implements OnDestroy {
     if (this.serviceOptions.enableHeartbeat) {
       this.httpSubscription = timer(0, this.serviceOptions.heartbeatInterval)
         .pipe(
-          switchMap(() => this.http[this.serviceOptions.requestMethod](this.serviceOptions.heartbeatUrl, {responseType: 'text'})),
+          switchMap(() => this.serviceOptions.heartbeatExecutor(this.serviceOptions)),
           retryWhen(errors =>
             errors.pipe(
               // log error message

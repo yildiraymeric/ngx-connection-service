@@ -97,6 +97,10 @@ export interface ConnectionServiceOptions {
    */
   heartbeatUrl?: string;
   /**
+   * Callback function to used for executing heartbeat requests. Defaults to HttpClient.request(...) function.
+   */
+  heartbeatExecutor?: (options?: ConnectionServiceOptions) => Observable<any>;
+  /**
    * Interval used to check Internet connectivity specified in milliseconds. Default value is "30000".
    */
   heartbeatInterval?: number;
@@ -146,6 +150,53 @@ export class AppModule {
 }
 
 ```
+
+### Custom HeartBeat handling function
+
+You could use a callback function for handling heartBeat requests by defining `heartbeatExecutor` property in `ConnectionServiceOptions`;
+
+```ts
+import { Component } from '@angular/core';
+import { ConnectionService } from 'ngx-connection-service';
+import {Observable} from 'rxjs';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  hasNetworkConnection: boolean;
+  hasInternetAccess: boolean;
+  status: string;
+
+  constructor(private connectionService: ConnectionService) {
+
+    this.connectionService.updateOptions({
+      heartbeatExecutor: options => new Observable<any>(subscriber => {
+        if (Math.random() > .5) {
+          subscriber.next();
+          subscriber.complete();
+        } else {
+          throw new Error('Connection error');
+        }
+      })
+    });
+
+    this.connectionService.monitor().subscribe(currentState => {
+      this.hasNetworkConnection = currentState.hasNetworkConnection;
+      this.hasInternetAccess = currentState.hasInternetAccess;
+      if (this.hasNetworkConnection && this.hasInternetAccess) {
+        this.status = 'ONLINE';
+      } else {
+        this.status = 'OFFLINE';
+      }
+    });
+  }
+}
+
+```
+
 ## License
 
 [MIT License](https://github.com/yildiraymeric/ngx-connection-service/blob/master/LICENSE) © M. Yıldıray Meriç & Balram Chavan (orginal work)
