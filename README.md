@@ -24,7 +24,7 @@ Please use following table to determine suitable library version for your Angula
 | 12.0.x                           | 12.2.17           |
 | 13.0.x                           | 13.4.0            |
 | 14.0.x                           | 14.3.0            |
-
+| 15.0.x                           | 15.2.9            |
 
 ## Usage
 
