@@ -64,10 +64,10 @@ export const ConnectionServiceOptionsToken: InjectionToken<ConnectionServiceOpti
 export class ConnectionService implements OnDestroy {
   private static DEFAULT_OPTIONS: ConnectionServiceOptions = {
     enableHeartbeat: true,
-    heartbeatUrl: '//server.test-cors.org/server?id=' + Date.now() + '&enable=true&status=200&credentials=false',
+    heartbeatUrl: 'https://corsproxy.io?' + encodeURIComponent('https://internethealthtest.org'),
     heartbeatInterval: 30000,
     heartbeatRetryInterval: 1000,
-    requestMethod: 'head',
+    requestMethod: 'get',
   };
 
   private stateChangeEventEmitter = new EventEmitter<ConnectionState>();
@@ -98,7 +98,7 @@ export class ConnectionService implements OnDestroy {
         heartbeatExecutor: () => this.http.request(
           this.serviceOptions.requestMethod,
           this.serviceOptions.heartbeatUrl,
-          {responseType: 'text'}
+          {responseType: 'text', withCredentials: false}
         ),
       });
 
@@ -110,6 +110,7 @@ export class ConnectionService implements OnDestroy {
 
     if (!_.isNil(this.httpSubscription)) {
       this.httpSubscription.unsubscribe();
+      this.httpSubscription = null;
     }
 
     if (this.serviceOptions.enableHeartbeat) {
@@ -146,6 +147,7 @@ export class ConnectionService implements OnDestroy {
 
     this.offlineSubscription = fromEvent(window, 'offline').subscribe(() => {
       this.currentState.hasNetworkConnection = false;
+      this.currentState.hasInternetAccess = false;
       this.checkInternetState();
       this.emitEvent();
     });
