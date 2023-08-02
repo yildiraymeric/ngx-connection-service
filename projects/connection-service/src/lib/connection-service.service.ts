@@ -118,9 +118,7 @@ export class ConnectionService implements OnDestroy {
           switchMap(() => this.serviceOptions.heartbeatExecutor(this.serviceOptions)),
           retryWhen(errors =>
             errors.pipe(
-              // log error message
               tap(val => {
-                console.error('Http error:', val);
                 this.currentState.hasInternetAccess = false;
                 this.emitEvent();
               }),
