@@ -1,6 +1,6 @@
 {
   "name": "ngx-connection-service",
-  "version": "15.0.0",
+  "version": "16.0.0",
   "description": "Detects whether browser has an active internet connection or not in Angular application.",
   "keywords": [
     "detect",
@@ -10,7 +10,7 @@
     "service",
     "HTTP",
     "angular",
-    "angular15",
+    "angular16",
     "internet-connection",
     "connectivity",
     "health-check"
@@ -27,8 +27,8 @@
   "homepage": "https://github.com/yildiraymeric/ngx-connection-service",
   "peerDependencies": {
     "lodash": ">=4",
-    "@angular/common": ">=15",
-    "@angular/core": ">=15",
+    "@angular/common": ">=16",
+    "@angular/core": ">=16",
     "rxjs": ">=6.6",
     "ssr-window": ">=4.0"
   }
