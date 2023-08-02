@@ -3,6 +3,9 @@ import {fromEvent, Observable, Subscription, timer} from 'rxjs';
 import {debounceTime, delay, retryWhen, startWith, switchMap, tap} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import * as _ from 'lodash';
+import {getWindow} from 'ssr-window';
+
+const window = getWindow();
 
 /**
  * Instance of this interface is used to report current connection status.
