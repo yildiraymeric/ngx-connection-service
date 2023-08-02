@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 })
 export class AppComponent {
   heartBeatState;
-  private internetChance: number;
+  internetChance: number;
 
   constructor(private connectionService: ConnectionService) {
     this.heartBeatState = this.connectionService.options.enableHeartbeat;
