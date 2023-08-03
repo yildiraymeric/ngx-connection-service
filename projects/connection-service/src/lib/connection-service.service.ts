@@ -3,6 +3,9 @@ import {fromEvent, Observable, Subscription, timer} from 'rxjs';
 import {debounceTime, delay, retryWhen, startWith, switchMap, tap} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import * as _ from 'lodash';
+import {getWindow} from 'ssr-window';
+
+const window = getWindow();
 
 /**
  * Instance of this interface is used to report current connection status.
@@ -61,10 +64,10 @@ export const ConnectionServiceOptionsToken: InjectionToken<ConnectionServiceOpti
 export class ConnectionService implements OnDestroy {
   private static DEFAULT_OPTIONS: ConnectionServiceOptions = {
     enableHeartbeat: true,
-    heartbeatUrl: '//server.test-cors.org/server?id=' + Date.now() + '&enable=true&status=200&credentials=false',
+    heartbeatUrl: 'https://corsproxy.io?' + encodeURIComponent('https://internethealthtest.org'),
     heartbeatInterval: 30000,
     heartbeatRetryInterval: 1000,
-    requestMethod: 'head',
+    requestMethod: 'get',
   };
 
   private stateChangeEventEmitter = new EventEmitter<ConnectionState>();
@@ -95,7 +98,7 @@ export class ConnectionService implements OnDestroy {
         heartbeatExecutor: () => this.http.request(
           this.serviceOptions.requestMethod,
           this.serviceOptions.heartbeatUrl,
-          {responseType: 'text'}
+          {responseType: 'text', withCredentials: false}
         ),
       });
 
@@ -107,6 +110,7 @@ export class ConnectionService implements OnDestroy {
 
     if (!_.isNil(this.httpSubscription)) {
       this.httpSubscription.unsubscribe();
+      this.httpSubscription = null;
     }
 
     if (this.serviceOptions.enableHeartbeat) {
@@ -115,9 +119,7 @@ export class ConnectionService implements OnDestroy {
           switchMap(() => this.serviceOptions.heartbeatExecutor(this.serviceOptions)),
           retryWhen(errors =>
             errors.pipe(
-              // log error message
               tap(val => {
-                console.error('Http error:', val);
                 this.currentState.hasInternetAccess = false;
                 this.emitEvent();
               }),
@@ -145,6 +147,7 @@ export class ConnectionService implements OnDestroy {
 
     this.offlineSubscription = fromEvent(window, 'offline').subscribe(() => {
       this.currentState.hasNetworkConnection = false;
+      this.currentState.hasInternetAccess = false;
       this.checkInternetState();
       this.emitEvent();
     });
