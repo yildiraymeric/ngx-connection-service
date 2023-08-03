@@ -1,8 +1,8 @@
-# Internet Connection Monitoring Service (Angular v7)
+# Internet Connection Monitoring Service
 
-> Detects whether browser has an active internet connection or not in Angular application. 
+> Detects whether browser has an active internet connection or not in Angular application.
 
-This library is a fork of https://github.com/ultrasonicsoft/ng-connection-service by Balram Chavan. 
+This library is a fork of https://github.com/ultrasonicsoft/ng-connection-service by Balram Chavan.
 
 ## Install
 
@@ -15,13 +15,14 @@ npm i ngx-connection-service --save
 Please use following table to determine suitable library version for your Angular project.
 
 | *ngx-connection-service version* | *Angular version* |
-| --- | --- |
-| 7.0.x | 7.2.16 |
-
+|----------------------------------|-------------------|
+| 7.0.x                            | 7.2.16            |
+| 8.0.x                            | 8.2.14            |
+| 9.0.x                            | 9.1.13            |
 
 ## Usage
 
-- Import `ConnectionServiceModule` in your `app.module.ts`. 
+- Import `ConnectionServiceModule` in your `app.module.ts`.
 
 ```ts
 import {BrowserModule} from '@angular/platform-browser';
@@ -79,7 +80,7 @@ export class AppComponent {
 
 ## Configuration
 
-You can configure the service using `ConnectionServiceOptions` configuration variable. 
+You can configure the service using `ConnectionServiceOptions` configuration variable.
 Following options are available;
 
 ```ts
