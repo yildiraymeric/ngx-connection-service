@@ -9,7 +9,7 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es2020",
+    "target": "ES2022",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -24,6 +24,7 @@
       "ngx-connection-service/*": [
         "dist/ngx-connection-service/*"
       ]
-    }
+    },
+    "useDefineForClassFields": false
   }
 }
