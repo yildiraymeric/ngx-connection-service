@@ -93,7 +93,7 @@ export interface ConnectionServiceOptions {
   enableHeartbeat?: boolean;
   /**
    * Url used for checking Internet connectivity, heartbeat system periodically makes "HEAD" requests to this URL to determine Internet
-   * connection status. Default value is "//server.test-cors.org".
+   * connection status. Default value is "'https://corsproxy.io?' + encodeURIComponent('https://internethealthtest.org')". (CORS restrictions are bypassed with this URL)
    */
   heartbeatUrl?: string;
   /**
@@ -109,7 +109,7 @@ export interface ConnectionServiceOptions {
    */
   heartbeatRetryInterval?: number;
   /**
-   * HTTP method used for requesting heartbeat Url. Default is 'head'.
+   * HTTP method used for requesting heartbeat Url. Default is 'get'.
    */
   requestMethod?: 'get' | 'post' | 'head' | 'options';
 

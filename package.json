@@ -1,7 +1,7 @@
 {
   "name": "ngx-connection-monitor",
   "description": "Detects whether browser has an active internet connection or not in Angular application.",
-  "version": "7.0.4",
+  "version": "7.0.5",
   "author": "M. Yıldıray Meric",
   "keywords": [
     "detect",
@@ -38,7 +38,8 @@
     "test_lib": "ng test ngx-connection-service",
     "npm_pack": "cd dist/ngx-connection-service && npm pack",
     "package": "npm run build_lib && npm run npm_pack",
-    "publish": "npm run build_lib && npm run npm_pack && cd dist/ngx-connection-service && npm publish"
+    "login": "npm login",
+    "publish": "npm run build_lib && cd dist/ngx-connection-service && npm publish"
   },
   "private": false,
   "dependencies": {
