@@ -26,7 +26,6 @@
   },
   "homepage": "https://github.com/yildiraymeric/ngx-connection-service",
   "peerDependencies": {
-    "lodash": ">=4",
     "@angular/common": ">=16",
     "@angular/core": ">=16",
     "rxjs": ">=6.6",
