@@ -52,7 +52,6 @@
     "@angular/platform-browser-dynamic": "^7.2.16",
     "@angular/router": "^7.2.16",
     "core-js": "^2.6.11",
-    "lodash": "^4.17.21",
     "rxjs": "^6.5.5",
     "ssr-window": "^4.0.2",
     "zone.js": "^0.8.29"
