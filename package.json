@@ -1,7 +1,7 @@
 {
   "name": "ngx-connection-monitor",
   "description": "Detects whether browser has an active internet connection or not in Angular application.",
-  "version": "14.0.0",
+  "version": "14.0.1",
   "author": "M. Yıldıray Meric",
   "keywords": [
     "detect",
@@ -51,7 +51,6 @@
     "@angular/platform-browser": "^14.3.0",
     "@angular/platform-browser-dynamic": "^14.3.0",
     "@angular/router": "^14.3.0",
-    "lodash": "^4.17.21",
     "rxjs": "^6.6.7",
     "ssr-window": "^4.0.2",
     "tslib": "^2.6.1",
