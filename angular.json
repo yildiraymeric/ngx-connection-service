@@ -56,18 +56,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-connection-monitor:build"
+            "buildTarget": "ngx-connection-monitor:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-connection-monitor:build:production"
+              "buildTarget": "ngx-connection-monitor:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-connection-monitor:build"
+            "buildTarget": "ngx-connection-monitor:build"
           }
         },
         "test": {
