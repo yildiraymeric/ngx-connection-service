@@ -1,7 +1,8 @@
 import {getTestBed, inject, TestBed} from '@angular/core/testing';
 
 import {ConnectionService} from './connection-service.service';
-import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {HttpTestingController, provideHttpClientTesting} from '@angular/common/http/testing';
+import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 
 describe('ConnectionServiceService', () => {
   let injector: TestBed;
@@ -10,8 +11,12 @@ describe('ConnectionServiceService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [ConnectionService]
+      imports: [],
+      providers: [
+        ConnectionService,
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+      ]
     });
     injector = getTestBed();
     service = injector.get(ConnectionService);

@@ -30,7 +30,7 @@ export interface ConnectionServiceOptions {
   enableHeartbeat?: boolean;
   /**
    * Url used for checking Internet connectivity, heartbeat system periodically makes "HEAD" requests to this URL to determine Internet
-   * connection status. Default value is "//server.test-cors.org".
+   * connection status. Default value is "//api.ipify.org/".
    */
   heartbeatUrl?: string;
   /**
@@ -63,7 +63,7 @@ export const ConnectionServiceOptionsToken: InjectionToken<ConnectionServiceOpti
 export class ConnectionService implements OnDestroy {
   private static DEFAULT_OPTIONS: ConnectionServiceOptions = {
     enableHeartbeat: true,
-    heartbeatUrl: 'https://corsproxy.io?' + encodeURIComponent('https://internethealthtest.org'),
+    heartbeatUrl: '//api.ipify.org/',
     heartbeatInterval: 30000,
     heartbeatRetryInterval: 1000,
     requestMethod: 'get',
