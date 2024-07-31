@@ -27,6 +27,7 @@ Please use following table to determine suitable library version for your Angula
 | 15.0.x                           | 15.2.9            |
 | 16.0.x                           | 16.1.8            |
 | 17.0.x                           | 17.1.0            |
+| 18.0.x                           | 18.1.2            |
 
 ## Usage
 
@@ -205,6 +206,10 @@ export class AppComponent {
 }
 
 ```
+
+## Changes
+
+- This version use https://api.ipify.org/ to determine Internet connection status
 
 ## License
 

@@ -1,10 +1,9 @@
 import {NgModule} from '@angular/core';
 import {ConnectionService} from './connection-service.service';
-import {HttpClientModule} from '@angular/common/http';
+import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 
 @NgModule({
-  imports: [HttpClientModule],
-  providers: [ConnectionService]
+  providers: [ConnectionService, provideHttpClient(withInterceptorsFromDi())]
 })
 export class ConnectionServiceModule {
 }
